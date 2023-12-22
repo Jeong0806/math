@@ -7,10 +7,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 project(
-  CPP_PROJECT_TEMPLATE
+  MATH
   LANGUAGES CXX
   VERSION 1.0.0
-  DESCRIPTION "C++ Project Template"
+  DESCRIPTION "Math library for C++"
   HOMEPAGE_URL ""
 )
 message(STATUS)
@@ -127,7 +127,7 @@ set(${PROJECT_NAME}_SOURCE_FILES
 # ${CPP_COMFILE_FLAGS}
 # )
 
-include(cmake/create_documents.cmake)
+# include(cmake/create_documents.cmake)
 
 add_subdirectory(${${PROJECT_NAME}_TEST_PATH})
 
