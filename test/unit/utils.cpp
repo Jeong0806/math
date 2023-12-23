@@ -4,10 +4,16 @@
 #include "math/utils.hpp"
 
 #include <cmath>
+#include <cstdint>
+#include <cstdlib>
 #include <limits>
 #include <stdexcept>
 
 #include "gtest/gtest.h"
+
+namespace {
+  constexpr uint32_t kTestCount = 1000U;
+}
 
 namespace jeong0806::math {
 TEST(MathUtils, Add) {
@@ -22,5 +28,12 @@ TEST(MathUtils, Add) {
                    std::numeric_limits<double>::infinity()),
                std::invalid_argument);
   EXPECT_THROW(Add(1.0 / 0.0, 1.0), std::invalid_argument);
+
+  for(uint32_t i = 0; i<kTestCount;++i){
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+
+    EXPECT_EQ(Add(KSourceX, KSourceY), KSourceX + KSourceY);
+  }
 }
 }  // namespace jeong0806::math
