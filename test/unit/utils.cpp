@@ -60,7 +60,7 @@ TEST(MathUtils, Subtract) {
   }
 }
 
-TEST(MathUtils, Multiply){
+TEST(MathUtils, Multiply) {
   EXPECT_THROW(Multiply(0.0, std::nan("")), std::invalid_argument);
   EXPECT_THROW(Multiply(std::nan(""), 0.0), std::invalid_argument);
   EXPECT_THROW(Multiply(std::nan(""), std::nan("")), std::invalid_argument);
@@ -79,6 +79,28 @@ TEST(MathUtils, Multiply){
 
     EXPECT_EQ(Multiply(KSourceX, KSourceY), KSourceX * KSourceY);
     EXPECT_NE(Multiply(KSourceX, KSourceY), KSourceX * (KSourceY + 1.0));
+  }
+}
+
+TEST(MathUtils, Divide) {
+  EXPECT_THROW(Divide(0.0, std::nan("")), std::invalid_argument);
+  EXPECT_THROW(Divide(std::nan(""), 0.0), std::invalid_argument);
+  EXPECT_THROW(Divide(std::nan(""), std::nan("")), std::invalid_argument);
+  EXPECT_THROW(Divide(0.0, std::numeric_limits<double>::infinity()),
+               std::invalid_argument);
+  EXPECT_THROW(Divide(std::numeric_limits<double>::infinity(), 0.0),
+               std::invalid_argument);
+  EXPECT_THROW(Divide(std::numeric_limits<double>::infinity(),
+                        std::numeric_limits<double>::infinity()),
+               std::invalid_argument);
+  EXPECT_THROW(Divide(1.0 , 0.0), std::invalid_argument);
+
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+
+    EXPECT_EQ(Divide(KSourceX, KSourceY), KSourceX * KSourceY);
+    EXPECT_NE(Divide(KSourceX, KSourceY), KSourceX * (KSourceY + 1.0));
   }
 }
 }  // namespace jeong0806::math
