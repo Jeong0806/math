@@ -5,9 +5,7 @@
 #define JEONG0806_MAHT_UTILS_HPP_
 
 namespace jeong0806::math {
-//사칙연산
-
-//비교연산
+auto Add(double lhs, double rhs) -> double;
 }  // namespace jeong0806::math
 
 #endif
