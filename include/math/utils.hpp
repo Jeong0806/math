@@ -7,6 +7,7 @@
 namespace jeong0806::math {
 auto Add(double lhs, double rhs) -> double;
 auto Subtract(double lhs, double rhs) -> double;
+auto Multiply(double lhs, double rhs) -> double;
 }  // namespace jeong0806::math
 
 #endif
