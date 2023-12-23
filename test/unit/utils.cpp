@@ -12,7 +12,7 @@
 #include "gtest/gtest.h"
 
 namespace {
-  constexpr uint32_t kTestCount = 1000U;
+constexpr uint32_t kTestCount = 1000U;
 }
 
 namespace jeong0806::math {
@@ -29,11 +29,12 @@ TEST(MathUtils, Add) {
                std::invalid_argument);
   EXPECT_THROW(Add(1.0 / 0.0, 1.0), std::invalid_argument);
 
-  for(uint32_t i = 0; i<kTestCount;++i){
+  for (uint32_t i = 0; i < kTestCount; ++i) {
     const auto KSourceX = static_cast<double>(std::rand());
     const auto KSourceY = static_cast<double>(std::rand());
 
     EXPECT_EQ(Add(KSourceX, KSourceY), KSourceX + KSourceY);
+    EXPECT_NE(Add(KSourceX, KSourceY), KSourceX + KSourceY + 1.0);
   }
 }
 }  // namespace jeong0806::math
