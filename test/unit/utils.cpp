@@ -99,8 +99,8 @@ TEST(MathUtils, Divide) {
     const auto KSourceX = static_cast<double>(std::rand());
     const auto KSourceY = static_cast<double>(std::rand());
 
-    EXPECT_EQ(Divide(KSourceX, KSourceY), KSourceX * KSourceY);
-    EXPECT_NE(Divide(KSourceX, KSourceY), KSourceX * (KSourceY + 1.0));
+    EXPECT_EQ(Divide(KSourceX, KSourceY), KSourceX / KSourceY);
+    EXPECT_NE(Divide(KSourceX, KSourceY), KSourceX / (KSourceY + 1.0));
   }
 }
 }  // namespace jeong0806::math
