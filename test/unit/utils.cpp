@@ -47,8 +47,16 @@ TEST(MathUtils, Subtract) {
   EXPECT_THROW(Subtract(std::numeric_limits<double>::infinity(), 0.0),
                std::invalid_argument);
   EXPECT_THROW(Subtract(std::numeric_limits<double>::infinity(),
-                   std::numeric_limits<double>::infinity()),
+                        std::numeric_limits<double>::infinity()),
                std::invalid_argument);
   EXPECT_THROW(Subtract(1.0 / 0.0, 1.0), std::invalid_argument);
+
+  for (uint32_t i = 0; i < kTestCount; ++i) {
+    const auto KSourceX = static_cast<double>(std::rand());
+    const auto KSourceY = static_cast<double>(std::rand());
+
+    EXPECT_EQ(Subtract(KSourceX, KSourceY), KSourceX - KSourceY);
+    EXPECT_NE(Subtract(KSourceX, KSourceY), KSourceX - KSourceY + 1.0);
+  }
 }
 }  // namespace jeong0806::math
