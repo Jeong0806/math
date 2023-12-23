@@ -14,4 +14,11 @@ auto Add(double lhs, double rhs) -> double {
   }
   return lhs + rhs;
 }
+auto Subtract(double lhs, double rhs) -> double{
+  if (std::isnan(lhs) || std::isnan(rhs) || std::isinf(lhs) ||
+      std::isinf(rhs)) {
+    throw std::invalid_argument("");
+  }
+  return lhs - rhs;
+}
 }  // namespace jeong0806::math
